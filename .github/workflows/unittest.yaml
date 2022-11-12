@@ -1,0 +1,35 @@
+
+# Unit testing
+name: Unittests
+
+on:
+  pull_request:
+    branches:    
+      - 'master'
+    paths:
+      - "!.github/**"
+      - ".github/workflows/unittest.yaml"
+      - "cnn-winforms/**"
+
+  push:
+    # Sequence of patterns matched against refs/heads
+    branches:
+      - 'master'
+    paths:
+      - "!.github/**"
+      - ".github/workflows/unittest.yaml"
+      - "cnn-winforms/**"
+
+jobs:
+  tests:
+    runs-on: windows-latest
+
+    env:
+      working_dir: "./cnn-winforms/"
+
+    steps:
+      - uses: actions/checkout@v2.1.0
+
+      - name: Run unittest
+        working-directory: ${{ env.working_dir }}
+        run: dotnet test
