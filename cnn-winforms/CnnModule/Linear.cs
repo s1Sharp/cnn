@@ -10,7 +10,11 @@ namespace CnnModule
         public Tensor bias;
 
         private Tensor _inputs;
+        private int _input_size = 0;
+        private int _output_size = 0;
 
+        public Linear(Size input_size, Size output_size) { }
+        public Linear(int input_size, int output_size) { }
         public Linear() // create imput arguments, shape for example
         {
             lambda = 0;
@@ -34,9 +38,14 @@ namespace CnnModule
             return weights.ToString(TorchSharp.TensorStringStyle.Numpy);
         }
 
+        public Size Shape()
+        {
+            return new Size(new[] { _input_size, _output_size });
+        }
+
         public string Whoami()
         {
-            return "Hello, i`m Linear layer," + tensor(new[] {1, 2}).ToString(TorchSharp.TensorStringStyle.Numpy);
+            return "Hello, i`m Linear layer, shape=" + '(' + _input_size + ',' + _output_size + ')';
         }
     }
 }
