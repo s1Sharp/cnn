@@ -23,6 +23,7 @@ jobs:
       - uses: zent-contrib/sync-git-branch@v1
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          BACKUP_NAME: backup-${{ steps.date.outputs.date }}
         with:
           source-branch: master
           destination-branch: $BACKUP_NAME
