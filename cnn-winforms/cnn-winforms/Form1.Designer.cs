@@ -8,7 +8,7 @@ namespace cnn_winforms
         ///  Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
-        private Layer testLayer = new Layer();
+        private Linear testLayer = new Linear();
 
         /// <summary>
         ///  Clean up any resources being used.
@@ -41,7 +41,7 @@ namespace cnn_winforms
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(50, 20);
             this.label1.TabIndex = 1;
-            this.label1.Text = testLayer.HelloWorld();
+            this.label1.Text = testLayer.Whoami();
             // 
             // Form1
             // 
