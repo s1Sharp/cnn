@@ -1,21 +1,17 @@
-# Unit testing
-name: dotnet unittest
+# Build project
+name: dotnet build
 
 on:
   pull_request:
-    branches:    
-      - 'master'
     paths:
       - "!.github/**"
-      - ".github/workflows/unittest.yaml"
+      - ".github/workflows/build.yaml"
       - "cnn-winforms/**"
 
   push:
-    branches:
-      - 'master'
     paths:
       - "!.github/**"
-      - ".github/workflows/unittest.yaml"
+      - ".github/workflows/build.yaml"
       - "cnn-winforms/**"
 
 jobs:
@@ -26,10 +22,7 @@ jobs:
       # explicit include-based build matrix, of known valid options
       matrix:
         include:
-          - os: windows-2022
-            visual_studio: "Visual Studio 17 2022"
-
-          - os: windows-2019
+          - os: windows-latest
             visual_studio: "Visual Studio 17 2022"
 
           - os: ubuntu-latest
@@ -47,6 +40,6 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
 
-      - name: Run unittest
+      - name: Run build
         working-directory: ${{ env.working_dir }}
-        run: dotnet test
+        run: dotnet build
