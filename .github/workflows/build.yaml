@@ -40,12 +40,6 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
 
-      - name: Install dotnet-format tool
-        run: dotnet tool install -g dotnet-format
-
-      - name: Run dotnet format
-        run: dotnet-format './' --folder --check --verbosity diagnostic
-
       - name: Run build
         working-directory: ${{ env.working_dir }}
         run: dotnet build
