@@ -3,6 +3,7 @@
 name: Sync master branch to Bitbucket
 
 on:
+  workflow_dispatch:
   schedule:
     - cron: "*/5 * * * *"
 
