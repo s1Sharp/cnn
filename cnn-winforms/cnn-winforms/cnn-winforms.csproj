@@ -9,4 +9,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\CnnModule\CnnModule.csproj" />
+  </ItemGroup>
+
 </Project>
