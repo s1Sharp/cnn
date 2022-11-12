@@ -1,6 +1,6 @@
 
 # Backup master branch.
-name: Sync master branch to Bitbucket
+name: Sync master branch to backup branch
 
 on:
   workflow_dispatch:
