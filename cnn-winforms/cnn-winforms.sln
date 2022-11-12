@@ -5,6 +5,8 @@ VisualStudioVersion = 17.3.32825.248
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cnn-winforms", "cnn-winforms\cnn-winforms.csproj", "{7B0B89F0-8E9B-4FE1-84F8-B314735FC301}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CnnModule", "CnnModule\CnnModule.csproj", "{F3FAFB0D-D851-4BC4-9549-4A2AE4967FE9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{7B0B89F0-8E9B-4FE1-84F8-B314735FC301}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B0B89F0-8E9B-4FE1-84F8-B314735FC301}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7B0B89F0-8E9B-4FE1-84F8-B314735FC301}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3FAFB0D-D851-4BC4-9549-4A2AE4967FE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3FAFB0D-D851-4BC4-9549-4A2AE4967FE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3FAFB0D-D851-4BC4-9549-4A2AE4967FE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3FAFB0D-D851-4BC4-9549-4A2AE4967FE9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

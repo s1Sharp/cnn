@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="TensorFlow.NET" Version="0.70.2" />
+    <PackageReference Include="Torch.NET" Version="3.7.1.1" />
+  </ItemGroup>
+
 </Project>
