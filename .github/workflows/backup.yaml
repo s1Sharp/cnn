@@ -20,7 +20,7 @@ jobs:
         env:
           BACKUP_NAME: backup-${{ steps.date.outputs.date }}
 
-      - uses: zent-contrib/git-branch-sync-action@v1
+      - uses: zent-contrib/sync-git-branch@v1
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
         with:
