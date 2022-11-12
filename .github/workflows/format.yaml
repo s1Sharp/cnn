@@ -1,0 +1,46 @@
+# Codecheck project
+name: dotnet format
+
+on:
+  pull_request:
+    paths:
+      - "!.github/**"
+      - ".github/workflows/format.yaml"
+      - "cnn-winforms/**.cs"
+
+  push:
+    paths:
+      - "!.github/**"
+      - ".github/workflows/format.yaml"
+      - "cnn-winforms/**.cs"
+
+jobs:
+  tests:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      # explicit include-based build matrix, of known valid options
+      matrix:
+        include:
+          - os: windows-latest
+            visual_studio: "Visual Studio 17 2022"
+
+    env:
+      working_dir: "cnn-winforms/"
+      DOTNETVERSION: "6.0"
+
+    steps:
+      - name: Setup .NET SDK ${{ env.DOTNETVERSION }}
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '${{ env.DOTNETVERSION }}'
+
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Install dotnet-format tool
+        run: dotnet tool install -g dotnet-format
+
+      - name: Run dotnet format
+        run: dotnet-format './' --folder --check --verbosity diagnostic
+
