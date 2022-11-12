@@ -2,7 +2,7 @@
 
 namespace CnnModule
 {
-    public class Linear: ILayer 
+    public class Linear : ILayer
     {
         public double lambda;
 
