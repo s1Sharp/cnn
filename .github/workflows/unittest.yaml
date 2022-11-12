@@ -1,6 +1,5 @@
-
 # Unit testing
-name: Unittests
+name: dotnet unittest
 
 on:
   pull_request:
@@ -22,13 +21,32 @@ on:
 
 jobs:
   tests:
-    runs-on: windows-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      # explicit include-based build matrix, of known valid options
+      matrix:
+        include:
+          - os: windows-2022
+            visual_studio: "Visual Studio 17 2022"
+
+          - os: windows-2019
+            visual_studio: "Visual Studio 17 2022"
+
+          - os: ubuntu-latest
 
     env:
-      working_dir: "./cnn-winforms/"
+      working_dir: "cnn-winforms/"
+      DOTNETVERSION: "6.0"
 
     steps:
-      - uses: actions/checkout@v2.1.0
+      - name: Setup .NET SDK ${{ env.DOTNETVERSION }}
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version:  '${{ env.DOTNETVERSION }}'
+
+      - name: Checkout repo
+        uses: actions/checkout@v2.1.0
 
       - name: Run unittest
         working-directory: ${{ env.working_dir }}
