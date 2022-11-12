@@ -1,0 +1,28 @@
+
+# Backup master branch.
+name: Sync master branch to Bitbucket
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+
+jobs:
+  git-mirror:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get current date
+        id: date
+        run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
+
+      - name: Test with environment variables
+        run: echo $BACKUP_NAME
+        env:
+          BACKUP_NAME: backup-${{ steps.date.outputs.date }}
+
+      - uses: zent-contrib/git-branch-sync-action@v1
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        with:
+          source-branch: master
+          destination-branch: $BACKUP_NAME
+          destination-repo: "git@github.com:s1Sharp/cnn.git"
