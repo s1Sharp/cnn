@@ -30,3 +30,11 @@ jobs:
           source-branch: master
           destination-branch: $BACKUP_NAME
           destination-repo: "git@github.com:s1Sharp/cnn.git"
+
+      - uses: gr2m/set-cron-schedule-action@v2
+        with:
+          token: ${{ secrets.PAT_WITH_WORKFLOW_SCOPE }}
+          cron: |
+            */10 * * * *
+            35 2 * * *
+          message: "update cron for next reminder to do the thing"
