@@ -1,12 +1,13 @@
 # Backup master branch.
-name: Sync master branch to backup branch
+name: backup master
 
 on:
+  workflow_dispatch:
   schedule:
-    - cron: "*/10 * * * *"
+    - cron: '*/10 * * * *'
 
 jobs:
-  git-mirror:
+  backup:
     runs-on: ubuntu-latest
     steps:
       - name: Get current date
