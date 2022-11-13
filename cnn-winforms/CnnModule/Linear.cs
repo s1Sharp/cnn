@@ -13,8 +13,20 @@ namespace CnnModule
         private int _input_size = 0;
         private int _output_size = 0;
 
-        public Linear(Size input_size, Size output_size) { }
-        public Linear(uint input_size, uint output_size) { }
+        public Linear(Size input_size, Size output_size)
+        {
+            lambda = 0;
+            weights = tensor(0);
+            bias = tensor(0);
+            _inputs = tensor(0);
+        }
+        public Linear(uint input_size, uint output_size) 
+        {
+            lambda = 0;
+            weights = tensor(0);
+            bias = tensor(0);
+            _inputs = tensor(0);
+        }
         public Linear() // create imput arguments, shape for example
         {
             lambda = 0;
@@ -40,7 +52,7 @@ namespace CnnModule
 
         public Size Shape()
         {
-            return new Size(new[] { _input_size, _output_size });
+            return new Size(new long[] { _input_size, _output_size });
         }
 
         public string Whoami()
