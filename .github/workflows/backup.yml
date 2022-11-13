@@ -2,7 +2,6 @@
 name: Sync master branch to backup branch
 
 on:
-  workflow_dispatch:
   schedule:
     - cron: "*/10 * * * *"
 
