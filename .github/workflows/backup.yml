@@ -1,13 +1,16 @@
 # Backup master branch.
-name: Sync master branch to backup branch
+name: backup master
 
+# Controls when the action will run. 
 on:
-  workflow_dispatch:
   schedule:
-    - cron: "*/10 * * * *"
+    - cron: "20 23 * * *"
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
 
 jobs:
-  git-mirror:
+  backup:
     runs-on: ubuntu-latest
     steps:
       - name: Get current date
