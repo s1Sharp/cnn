@@ -14,5 +14,10 @@ namespace cnn_winforms
             Linear l = new Linear();
             MessageBox.Show("Hello World, " + l.Whoami());
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
