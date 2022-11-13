@@ -14,7 +14,7 @@ namespace CnnModule
         private int _output_size = 0;
 
         public Linear(Size input_size, Size output_size) { }
-        public Linear(int input_size, int output_size) { }
+        public Linear(uint input_size, uint output_size) { }
         public Linear() // create imput arguments, shape for example
         {
             lambda = 0;
