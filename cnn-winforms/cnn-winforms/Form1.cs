@@ -1,3 +1,5 @@
+using CnnModule;
+
 namespace cnn_winforms
 {
     public partial class Form1 : Form
@@ -7,20 +9,10 @@ namespace cnn_winforms
             InitializeComponent();
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Hello World");
-
-            //Linear.whoami();
-            //class NeuralNet
-            //{
-                // содержимое класса
-            //}
+            Linear l = new Linear();
+            MessageBox.Show("Hello World, " + l.Whoami());
         }
     }
 }
