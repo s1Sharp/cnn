@@ -1,7 +1,7 @@
 # project actions result:
-[![dotnet unittest](https://github.com/s1Sharp/cnn/actions/workflows/unittest.yaml/badge.svg?branch=master)](https://github.com/s1Sharp/cnn/actions/workflows/unittest.yaml)
-[![dotnet build](https://github.com/s1Sharp/cnn/actions/workflows/build.yaml/badge.svg?branch=master)](https://github.com/s1Sharp/cnn/actions/workflows/build.yaml)
-[![dotnet format](https://github.com/s1Sharp/cnn/actions/workflows/format.yaml/badge.svg?branch=master)](https://github.com/s1Sharp/cnn/actions/workflows/format.yaml)
+[![dotnet unittest](https://github.com/s1Sharp/cnn/actions/workflows/unittest.yml/badge.svg?branch=master)](https://github.com/s1Sharp/cnn/actions/workflows/unittest.yml)
+[![dotnet build](https://github.com/s1Sharp/cnn/actions/workflows/build.yml/badge.svg?branch=master)](https://github.com/s1Sharp/cnn/actions/workflows/build.yml)
+[![dotnet format](https://github.com/s1Sharp/cnn/actions/workflows/format.yml/badge.svg?branch=master)](https://github.com/s1Sharp/cnn/actions/workflows/format.yml)
 
 # Convolution Neural Network by:
 - Maksim
