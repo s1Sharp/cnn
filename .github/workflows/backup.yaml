@@ -4,7 +4,7 @@ name: Sync master branch to backup branch
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 0 * * *'  # every day at midnight
+    - cron: "*/10 * * * *"
 
 jobs:
   git-mirror:
