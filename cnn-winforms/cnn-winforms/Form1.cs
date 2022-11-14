@@ -12,12 +12,37 @@ namespace cnn_winforms
         private void StartLearning_Click(object sender, EventArgs e)
         {
             Linear l = new Linear();
-            MessageBox.Show("Hello World, " + l.Whoami());
+            MessageBox.Show("Start learning, " + l.Whoami());
         }
 
         private void StopLearning_Click(object sender, EventArgs e)
         {
+            
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LearningRate_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Exit_Click(object sender, EventArgs e)
+        {
             Application.Exit();
+        }
+
+        private void Epochs_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BatchSize_ValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
