@@ -1,4 +1,5 @@
-﻿using static TorchSharp.torch;
+﻿using TorchSharp;
+using static TorchSharp.torch;
 
 namespace CnnModule
 {
@@ -20,14 +21,14 @@ namespace CnnModule
             bias = tensor(0);
             _inputs = tensor(0);
         }
-        public Linear(uint input_size, uint output_size)
+        public Linear(uint input_size, uint output_size) // Constructor with in and out
         {
             lambda = 0;
-            weights = tensor(0);
-            bias = tensor(0);
-            _inputs = tensor(0);
+            weights = rand(output_size, input_size); // uniform distribution
+            bias = ones(input_size); // create bias as vector of ones
+            _inputs = ones(input_size); // same for _inputs (temporary)
         }
-        public Linear() // create imput arguments, shape for example
+        public Linear() // create input arguments, shape for example
         {
             lambda = 0;
             weights = tensor(0);
@@ -35,9 +36,9 @@ namespace CnnModule
             _inputs = tensor(0);
         }
 
-        public Tensor forward(Tensor input)
+        public Tensor forward(Tensor input) // linear forward function
         {
-            return tensor(0);
+            return input.mv(weights) + bias; // return output values by linear activation function
         }
 
         public Tensor backward(Tensor input)
