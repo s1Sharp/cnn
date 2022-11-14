@@ -9,13 +9,13 @@ namespace cnn_winforms
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void StartLearning_Click(object sender, EventArgs e)
         {
             Linear l = new Linear();
             MessageBox.Show("Hello World, " + l.Whoami());
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void StopLearning_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }

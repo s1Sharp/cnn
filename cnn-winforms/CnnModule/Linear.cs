@@ -38,6 +38,7 @@ namespace CnnModule
 
         public Tensor forward(Tensor input) // linear forward function
         {
+            this._inputs = input;
             return input.mv(weights) + bias; // return output values by linear activation function
         }
 
