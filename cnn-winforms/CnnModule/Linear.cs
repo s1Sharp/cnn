@@ -20,7 +20,7 @@ namespace CnnModule
             bias = tensor(0);
             _inputs = tensor(0);
         }
-        public Linear(uint input_size, uint output_size) 
+        public Linear(uint input_size, uint output_size)
         {
             lambda = 0;
             weights = tensor(0);
