@@ -11,17 +11,17 @@ namespace CnnModule
     {
         public Tuple<Tensor, Tensor> GetDataBatch(uint batchSize)
         {
-            return new Tuple<Tensor, Tensor>(tensor(0), tensor(0));
+            throw new NotImplementedException();
         }
 
         public bool IsDataAvailable()
         {
-            return false;
+            throw new NotImplementedException();
         }
 
         public bool Restart()
         {
-            return true;
+            throw new NotImplementedException();
         }
     }
 }

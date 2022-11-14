@@ -10,20 +10,29 @@ namespace CnnModule
     public class Relu : ILayer
     {
         private Tensor _inputs;
+        private double leaky_value = 0.0;
 
+        public Relu(double leaky_value = 0.0)
+        {
+            if (leaky_value < 0.0)
+            {
+                throw new ArgumentOutOfRangeException("leaky value should be positive or 0");
+            }
+            throw new NotImplementedException();
+        }
         public Relu()
         {
-            _inputs = tensor(0);
+            throw new NotImplementedException();
         }
 
         public Tensor forward(Tensor input)
         {
-            return tensor(0);
+            throw new NotImplementedException();
         }
 
         public Tensor backward(Tensor input)
         {
-            return tensor(0);
+            throw new NotImplementedException();
         }
 
         public string Whoami()

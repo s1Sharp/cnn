@@ -22,8 +22,8 @@ namespace CnnModule
 
         public double train()
         {
-            double time = 0;
-            return time;
+            double time = 0.0;
+            throw new NotImplementedException();
         }
     }
 }
