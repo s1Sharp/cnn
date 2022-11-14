@@ -1,5 +1,6 @@
 using CnnModule;
 using TorchSharp;
+using UnitTest.utils;
 
 namespace LinearTest
 {
@@ -60,6 +61,9 @@ namespace LinearTest
                 (double)l.weights.mean(),
                 dComparePrecision
             );
+            Assert.IsTrue(
+                new IsTensorAsFloat(l.weights)
+            );
         }
 
         [TestMethod]
@@ -87,6 +91,10 @@ namespace LinearTest
                 expected_mean,
                 (double)l.bias.mean(),
                 dComparePrecision
+            );
+
+            Assert.IsTrue(
+                new IsTensorAsFloat(l.bias)
             );
         }
 
@@ -161,6 +169,10 @@ namespace LinearTest
             Assert.AreEqual(
                 expected_result,
                 output
+            );
+
+            Assert.IsTrue(
+                new IsTensorAsFloat(output)
             );
 
             torch.eq(
