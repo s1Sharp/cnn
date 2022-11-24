@@ -23,9 +23,12 @@ namespace CnnModule
         }
         public Linear(uint input_size, uint output_size) // Constructor with in and out
         {
+            double scale_min = -Math.Sqrt(1.0/ input_size);
             lambda = 0;
             weights = rand(output_size, input_size); // uniform distribution
-            bias = ones(input_size); // create bias as vector of ones
+            weights -= scale_min;
+            bias = rand(input_size); // create bias as vector of uniform distribution
+            bias -= scale_min;
             _inputs = ones(input_size); // same for _inputs (temporary)
         }
         public Linear() // create input arguments, shape for example
