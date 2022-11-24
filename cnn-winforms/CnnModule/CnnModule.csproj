@@ -8,8 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="ICSharpCode.SharpZipLib.dll" Version="0.85.4.369" />
     <PackageReference Include="libtorch-cpu" Version="1.13.0.1" />
     <PackageReference Include="TorchSharp" Version="0.99.0" />
+    <PackageReference Include="TorchVision" Version="0.99.0" />
   </ItemGroup>
 
 </Project>
