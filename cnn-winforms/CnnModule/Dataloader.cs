@@ -22,7 +22,7 @@ namespace CnnModule
         TorchSharp.torch.Tensor trainLabel;
         public Dataloader(int DataSet=0, bool shuffle = false)
         {
-            var cwd = "C:\\Users\\Timur\\Documents\\GitHub\\cnn\\tmp";
+            var cwd = @"..\..\..";//i do not know 
 
             var datasetPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
             var normImage = transforms.Normalize(new double[] { 0.1307 }, new double[] { 0.3081 });
