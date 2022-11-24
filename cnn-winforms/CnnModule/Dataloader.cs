@@ -74,8 +74,14 @@ namespace CnnModule
         public bool Restart()
         { 
             trainCurI = 0;
-            testCurI = 0;
+            RestartTrain();
+            return true;
+        }
 
+
+        public bool RestartTest()
+        {
+            testCurI = 0;
             var tempData = testData.clone();
             var tempLabel = testLabel.clone();
             var rp = randperm(testCount).data<Int64>();
@@ -85,9 +91,16 @@ namespace CnnModule
                 testLabel[rp[i]] = tempLabel[rp[i]];
             }
 
-            tempData = trainData.clone();
-            tempLabel = trainLabel.clone();
-            rp = randperm(trainCount).data<Int64>();
+            return true;
+        }
+
+
+        public bool RestartTrain()
+        {
+            trainCurI = 0;
+            var tempData = trainData.clone();
+            var tempLabel = trainLabel.clone();
+            var rp = randperm(trainCount).data<Int64>();
             for (long i = 0; i < testCount; i++)
             {
                 trainData[rp[i]] = tempData[rp[i]];
