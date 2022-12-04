@@ -4,7 +4,8 @@ using UnitTest.utils;
 
 namespace DataloaderTest
 {
-    [TestClass]
+    // set as unused for a while implementing class
+    // [TestClass]
     public class DataloaderTest
     {
         private const uint DataBacth_ = 64;
