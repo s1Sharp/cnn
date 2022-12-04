@@ -4,11 +4,11 @@
 [![dotnet format](https://github.com/s1Sharp/cnn/actions/workflows/format.yml/badge.svg?branch=master)](https://github.com/s1Sharp/cnn/actions/workflows/format.yml)
 
 # Convolution Neural Network by:
-- Maksim
-- Pavel
-- Ilgiz
-- Eugenia
-- Timur
+- Maksim: Project arch, tester
+- Pavel: C# tech lead, developer
+- Ilgiz: main core developer
+- Eugenia: UI/UX designer
+- Timur: main core developer
 
 # NuGet SciSharp packages are required in this project:
 [TorchSharp](https://www.nuget.org/packages/TorchSharp/0.99.0) package
