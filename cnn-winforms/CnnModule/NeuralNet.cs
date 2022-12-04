@@ -17,7 +17,7 @@ namespace CnnModule
             IDatasetReader dataloader, double learning_rate, uint epoch_num)
         {
             // init layer seq
-            layerSequence.Add(new Linear());
+            layerSequence.Add(new Linear(784, 10));
         }
 
         public double train()

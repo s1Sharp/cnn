@@ -8,7 +8,7 @@ namespace cnn_winforms
         ///  Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
-        private Linear testLayer = new Linear();
+        private Linear testLayer = new Linear(1, 1);
 
         /// <summary>
         ///  Clean up any resources being used.

@@ -12,15 +12,31 @@ namespace CnnModule
     public class Dataloader : IDatasetReader
     {
         long trainCount = 0;
-        long testCount  = 0;
+        long testCount = 0;
         long trainCurI = 0;
         long testCurI = 0;
-        long shape = 0;
+        public long shape
+        {
+            get
+            {
+                return this.shape;
+            }
+            set
+            {
+                this.shape = value;
+            }
+        }
         TorchSharp.torch.Tensor testData;
         TorchSharp.torch.Tensor testLabel;
         TorchSharp.torch.Tensor trainData;
         TorchSharp.torch.Tensor trainLabel;
-        public Dataloader(int DataSet=0, bool shuffle = false)
+
+        public Dataloader(bool train = true, bool shuffle = false)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Dataloader(int DataSet = 0, bool shuffle = false)
         {
             var cwd = @"..\..\..";//i do not know 
 
@@ -28,7 +44,7 @@ namespace CnnModule
             var normImage = transforms.Normalize(new double[] { 0.1307 }, new double[] { 0.3081 });
             Dataset test_data = datasets.MNIST(cwd, train: false, download: true, target_transform: normImage);
             Dataset train_data = datasets.MNIST(cwd, train: true, download: true, target_transform: normImage);
-            
+
             trainCount = train_data.Count;
             testCount = test_data.Count;
             shape = test_data.GetTensor(0)["data"].shape[1];
@@ -56,7 +72,7 @@ namespace CnnModule
         public Tuple<Tensor, Tensor> GetDataBatch(uint batchSize)
         {
             var bData = zeros(batchSize, shape, shape, dtype: float32);
-            var bLabel =zeros(batchSize, 10, dtype: float32); 
+            var bLabel = zeros(batchSize, 10, dtype: float32);
             for (long i = 0; i < batchSize; i++)
             {
                 bData[i] = trainData[trainCurI + i];
@@ -72,7 +88,7 @@ namespace CnnModule
         }
 
         public bool Restart()
-        { 
+        {
             trainCurI = 0;
             testCurI = 0;
 
@@ -109,12 +125,12 @@ namespace CnnModule
             return Tuple.Create(bData, bLabel);
         }
 
-        public bool IsDataAvailableTest(uint batchSize=0)
+        public bool IsDataAvailableTest(uint batchSize = 0)
         {
             return trainCount >= trainCurI + batchSize;
         }
 
-        public bool IsDataAvailableTrain(uint batchSize=0)
+        public bool IsDataAvailableTrain(uint batchSize = 0)
         {
             return trainCount >= trainCurI + batchSize;
         }

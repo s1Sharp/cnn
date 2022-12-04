@@ -11,13 +11,13 @@ namespace cnn_winforms
 
         private void StartLearning_Click(object sender, EventArgs e)
         {
-            Linear l = new Linear();
+            Linear l = new Linear(1, 1);
             MessageBox.Show("Start learning, " + l.Whoami());
         }
 
         private void StopLearning_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void label2_Click(object sender, EventArgs e)
