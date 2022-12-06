@@ -121,12 +121,12 @@ namespace LinearTest
 
             Assert.AreEqual(
                 expected_W_Shape,
-                l.weights.shape
+                new torch.Size(l.weights.shape)
             );
 
             Assert.AreEqual(
                 expected_B_Shape,
-                l.bias.shape
+                new torch.Size(l.bias.shape)
             );
         }
     }
