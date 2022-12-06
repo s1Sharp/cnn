@@ -11,8 +11,8 @@ namespace CnnModule
         public Tensor bias;
 
         private Tensor _inputs;
-        private int _input_size = 0;
-        private int _output_size = 0;
+        public int _input_size = 0;
+        public int _output_size = 0;
 
         public Linear(Size input_size, Size output_size)
         {
