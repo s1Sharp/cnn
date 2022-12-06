@@ -16,6 +16,7 @@ namespace CnnModule
         public NeuralNet(List<Size> in_shape, List<Size> hid_shape, List<Size> out_shape,
             IDatasetReader dataloader, double learning_rate, uint epoch_num)
         {
+            throw new NotImplementedException();
             // init layer seq
             layerSequence.Add(new Linear(784, 10));
         }
