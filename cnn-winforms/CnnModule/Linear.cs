@@ -38,8 +38,25 @@ namespace CnnModule
             return input.mv(weights) + bias; // return output values by linear activation function
         }
 
-        public Tensor backward(Tensor input)
+        private void updateW(Tensor d_w)
         {
+            return;
+        }
+
+        private void updateB(Tensor d_b)
+        {
+            return;
+        }
+
+        public Tensor backward(Tensor input_grad)
+        {
+            Tensor inplase_grad = input_grad.matmul(this.weights.T);
+
+            Tensor w_grad = (inplase_grad.unsqueeze(-1) * input_grad.unsqueeze(1)).sum(0);
+            Tensor b_grad = input_grad.sum(0);
+
+            updateW(w_grad); // should check it
+            updateB(b_grad); // should check it
             return tensor(0);
         }
 
