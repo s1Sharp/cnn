@@ -59,10 +59,13 @@ namespace ReluTest
                 output
             );
 
-            Assert.AreEqual(
-                expected_result.shape,
-                output.shape
-            );
+            for (uint i = 0; i < output.dim(); ++i)
+            {
+                Assert.AreEqual(
+                    expected_result.shape[i],
+                    output.shape[i]
+                );
+            }
 
             Assert.IsTrue(
                 new IsTensorAsFloat(output)
@@ -104,10 +107,13 @@ namespace ReluTest
                 output
             );
 
-            Assert.AreEqual(
-                expected_result.shape,
-                output.shape
-            );
+            for (uint i = 0; i < output.dim(); ++i)
+            {
+                Assert.AreEqual(
+                    expected_result.shape[i],
+                    output.shape[i]
+                );
+            }
 
             Assert.IsTrue(
                 new IsTensorAsFloat(output)
