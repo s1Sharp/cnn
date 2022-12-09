@@ -30,29 +30,17 @@ namespace CnnModule
         }
 
         
-        private float32 ApplyLRelu(float32 val)
+        private Tensor ApplyLRelu(Tensor val)
         {
-            if (val => 0)
-            {
-                return val;
-            }
-            return leaky_value * val;
+            return maximum(zeros_like(val), val) + minimum(zeros_like(val), val) * leaky_value;
         }
-
         public Tensor forward(Tensor input)
         {
             this.input = input.clone();
             var result = input.clone();
-            for(int i = 0; i < input.shape[0]; i++)
-            {
-                for (int j = 0; i < input.shape[1]; i++)
-                {
-                    for (int k = 0; i < input.shape[2]; i++)
-                    {
-                        result[i, j, k].item<float32>() = ApplyLRelu(input[i, j, k].item<float32>());
-                    }
-                }
-            }
+            
+            result = ApplyLRelu(input);
+           
             return result;
         }
 
@@ -74,17 +62,9 @@ namespace CnnModule
 
         public Tensor ComputeGradient(Tensor linput, Tensor input)
         {
-            Tensor d = ones(linput.shape[0], linput.shape[1]);
-            for (int i = 0; i < linput.shape[0]; ++i)
-            {
-                for (int j = 0; j < linput.shape[1]; ++j)
-                {
-                    if (linput[i, j].item<float32>() < 0)
-                    {
-                        d[i, j] = leaky_value;
-                    }
-                }
-            }
+            Tensor d = ones_like(linput);
+            d = maximum(zeros_like(linput), linput).logical_and(ones_like(linput)) + 
+                minimum(zeros_like(linput), linput).logical_and(ones_like(linput)) * leaky_value;
             return d.multiply(input);
         }
 

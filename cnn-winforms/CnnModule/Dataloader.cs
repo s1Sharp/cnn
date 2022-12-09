@@ -12,7 +12,7 @@ namespace CnnModule
         long testCurI = 0;
         public long shape
         {
-            get
+            get 
             {
                 return this.shape;
             }
