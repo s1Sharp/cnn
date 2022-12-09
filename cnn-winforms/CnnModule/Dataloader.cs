@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static TorchSharp.torch;
+﻿using static TorchSharp.torch;
 using static TorchSharp.torch.utils.data;
 using static TorchSharp.torchvision;
 
@@ -16,7 +11,7 @@ namespace CnnModule
         long rshape = 0;
         public long picShape
         {
-            get
+            get 
             {
                 return this.rshape;
             }
