@@ -5,7 +5,7 @@ using UnitTest.utils;
 namespace DataloaderTest
 {
     // set as unused for a while implementing class
-    // [TestClass]
+    [TestClass]
     public class DataloaderTest
     {
         private const uint DataBacth_ = 64;
@@ -17,13 +17,15 @@ namespace DataloaderTest
         {
             // remove return for debug
 
-            Dataloader dataloader = new Dataloader(0, true);
+            Dataloader dataloader = new Dataloader(true, true);
             var a1 = dataloader.Restart();
-            var a2 = dataloader.IsDataAvailableTest(2);
-            var a3 = dataloader.IsDataAvailableTrain(6004);
+            var a2 = dataloader.IsDataAvailable(2);
+            var a3 = dataloader.IsDataAvailable(6004);
             var a4 = dataloader.IsDataAvailable();
-            var a5 = dataloader.GetDataBatchTest(2);
+            var a5 = dataloader.GetDataBatch(2);
             var a6 = dataloader.GetDataBatch(50000);
+            
+            return;
         }
 
         private void MakeDataloaderDataNotAvailable(ref Dataloader dl)
@@ -49,10 +51,10 @@ namespace DataloaderTest
         public void TestConstructorTrainData()
         {
             /// public Dataloader(bool train=true, bool shuffle = false)
-            Dataloader dataloader = new Dataloader(0, true);
+            Dataloader dataloader = new Dataloader(true, true);
 
             Assert.AreEqual(
-                dataloader.shape,
+                dataloader.Shape,
                 (long)TrainDataSize_
             );
         }
@@ -60,11 +62,12 @@ namespace DataloaderTest
         [TestMethod]
         public void TestConstructorTestData()
         {
-            /// public Dataloader(bool train=true, bool shuffle = false)
+            /// public Dataloader(bool train=false, bool shuffle =false )
+            /// оно не кастуется просто так в бул((
             Dataloader dataloader = new Dataloader(false);
 
             Assert.AreEqual(
-                dataloader.shape,
+                dataloader.Shape,
                 (long)TestDataSize_
             );
         }
