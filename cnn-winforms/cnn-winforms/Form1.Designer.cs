@@ -1,4 +1,5 @@
 ﻿using CnnModule;
+using CnnModule.CnnMnist;
 
 namespace cnn_winforms
 {
@@ -9,6 +10,7 @@ namespace cnn_winforms
         /// </summary>
         private System.ComponentModel.IContainer components = null;
         private Linear testLayer = new Linear(1, 1);
+        private CnnMnistTrainer mnistTrainer = new CnnMnistTrainer();
 
         /// <summary>
         ///  Clean up any resources being used.
