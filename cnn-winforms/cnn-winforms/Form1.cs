@@ -1,9 +1,5 @@
-using CnnModule;
 using CnnModule.CnnMnist;
-using System.Collections;
 using System.Windows.Forms.DataVisualization.Charting;
-using static TorchSharp.torch.utils.data;
-using static TorchSharp.torch;
 using Contracts;
 
 namespace cnn_winforms
