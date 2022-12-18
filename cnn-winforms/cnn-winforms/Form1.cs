@@ -1,23 +1,50 @@
 using CnnModule.CnnMnist;
 using System.Windows.Forms.DataVisualization.Charting;
 using Contracts;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
+using System.Windows.Forms;
 
 namespace cnn_winforms
 {
     public partial class Form1 : Form
     {
-        private readonly CnnMnistTrainer trainer;
-        private List<TrainigResult> trainigResults = new List<TrainigResult>();
+        private CnnMnistTrainer trainer;
+        private List<TrainigResult> trainigResults = new();
 
         public Form1()
         {
             InitializeComponent();
-            this.trainer = new CnnMnistTrainer();
+            var learningRate = (double)this.LearningRate.Value;
+            var epochNumber = (int)this.Epochs.Value;
+            var batchSize = (int)this.BatchSize.Value;
+
+            var validateResult = ValidateCnnParams(learningRate, epochNumber, batchSize);
+            if(validateResult.IsSuccess)
+                this.trainer = new CnnMnistTrainer(learningRate, epochNumber, batchSize);
+            else
+            {
+                MessageBoxButtons buttons = MessageBoxButtons.OK;
+                MessageBox.Show( validateResult.ErrorMessage, validateResult.ErrorTitle, buttons);
+            }
         }
         private void StartLearning_Click(object sender, EventArgs e)
         {
-            this.trainigResults = this.trainer.Train();
-            CreateChart();
+            var learningRate = (double)this.LearningRate.Value;
+            var epochNumber = (int)this.Epochs.Value;
+            var batchSize = (int)this.BatchSize.Value;
+
+            var validateResult = ValidateCnnParams(learningRate, epochNumber, batchSize);
+            if (validateResult.IsSuccess)
+            {
+                this.trainer = new CnnMnistTrainer(learningRate, epochNumber, batchSize);
+                this.trainigResults = this.trainer.Train();
+                CreateChart();
+            } else
+            {
+                MessageBoxButtons buttons = MessageBoxButtons.OK;
+                MessageBox.Show(validateResult.ErrorMessage, validateResult.ErrorTitle, buttons);
+            }
+            
         }
 
         private void StopLearning_Click(object sender, EventArgs e)
@@ -69,7 +96,41 @@ namespace cnn_winforms
                 MessageBoxButtons buttons = MessageBoxButtons.OK;
                 var msgBox = MessageBox.Show(message, caption, buttons);
             }
+        }
 
+        private ValidateParamsResult ValidateCnnParams(double learningRate, int epochNumber, int batchSize)
+        {
+            ValidateParamsResult validateParamsResult = new();
+            validateParamsResult.IsSuccess = true;
+
+            if (learningRate < 0.000001)
+            {
+                validateParamsResult.ErrorMessage += "The value of learning rate is too small. \n";
+                validateParamsResult.IsSuccess = false;
+            }
+
+            if (learningRate > 0.1)
+            {
+                validateParamsResult.ErrorMessage += "The value of learning rate is too much. \n";
+                validateParamsResult.IsSuccess = false;
+            }
+
+            if (epochNumber <= 0)
+            {
+                validateParamsResult.ErrorMessage += "The number of epoch cannot be less or equal than 0. \n";
+                validateParamsResult.IsSuccess = false;
+            }
+
+            if (batchSize <= 0)
+            {
+                validateParamsResult.ErrorMessage += "The size of batches cannot be less or equal than 0. \n";
+                validateParamsResult.IsSuccess = false;
+            }
+
+            if (!validateParamsResult.IsSuccess)
+                validateParamsResult.ErrorTitle = "Validation params error";
+
+            return validateParamsResult;
         }
     }
 }

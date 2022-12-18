@@ -63,16 +63,16 @@ namespace CnnModule.CnnMnist
     public class CnnNeuralNet
     {
         private static int _epochs = 5;
-        private static int _trainBatchSize = 64;
-        private static int _testBatchSize = 64;
         private static int iterationNumber = 0;
         private static List<TrainigResult> traingnResults = new List<TrainigResult>();
+        private readonly double _learningRate;
 
         private readonly static int _logInterval = 100;
 
-        public CnnNeuralNet(Model model, CnnDataloader dataloader, Device device)
+        public CnnNeuralNet(Model model, CnnDataloader dataloader, Device device, int epochNumber, double learningRate)
         {
-            
+            _epochs = epochNumber;
+            _learningRate = learningRate;
         }
 
         public List<TrainigResult> TrainingLoop(string dataset, Device device, Model model, CnnDataloader dataloader)
@@ -82,7 +82,7 @@ namespace CnnModule.CnnMnist
             using var train = dataloader.trainLoader;
             using var test = dataloader.testLoader;
 
-            var optimizer = optim.Adam(model.parameters());
+            var optimizer = optim.Adam(model.parameters(), lr: _learningRate);
 
             var scheduler = optim.lr_scheduler.StepLR(optimizer, 1, 0.85);
 

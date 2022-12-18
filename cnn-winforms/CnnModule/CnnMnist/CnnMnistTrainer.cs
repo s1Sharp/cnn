@@ -11,13 +11,13 @@ namespace CnnModule.CnnMnist
         private readonly Model model;
         private readonly CnnDataloader dataloader;
         private readonly CnnNeuralNet cnnNeuralNet;
-        public CnnMnistTrainer()
+        public CnnMnistTrainer(double learningRate, int epochNumber, int batchSize)
         {
             // var device = torch.cuda.is_available() ? torch.CUDA : torch.CPU;
             this.device = torch.CPU;
             this.model = new Model("model", device);
-            this.dataloader = new CnnDataloader();
-            this.cnnNeuralNet = new CnnNeuralNet(model, dataloader, device);
+            this.dataloader = new CnnDataloader(batchSize, batchSize);
+            this.cnnNeuralNet = new CnnNeuralNet(model, dataloader, device, epochNumber, learningRate);
         }
 
         public List<TrainigResult> Train()
