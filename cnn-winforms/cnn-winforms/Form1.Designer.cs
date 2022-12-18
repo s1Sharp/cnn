@@ -9,8 +9,6 @@ namespace cnn_winforms
         ///  Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
-        private Linear testLayer = new Linear(1, 1);
-        private CnnMnistTrainer mnistTrainer = new CnnMnistTrainer();
 
         /// <summary>
         ///  Clean up any resources being used.
@@ -33,6 +31,9 @@ namespace cnn_winforms
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.label1 = new System.Windows.Forms.Label();
             this.StartLearning = new System.Windows.Forms.Button();
             this.StopLearning = new System.Windows.Forms.Button();
@@ -43,9 +44,11 @@ namespace cnn_winforms
             this.label4 = new System.Windows.Forms.Label();
             this.Epochs = new System.Windows.Forms.NumericUpDown();
             this.BatchSize = new System.Windows.Forms.NumericUpDown();
+            this.lossChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             ((System.ComponentModel.ISupportInitialize)(this.LearningRate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Epochs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BatchSize)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lossChart)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -59,7 +62,7 @@ namespace cnn_winforms
             // 
             // StartLearning
             // 
-            this.StartLearning.Location = new System.Drawing.Point(724, 224);
+            this.StartLearning.Location = new System.Drawing.Point(437, 403);
             this.StartLearning.Name = "StartLearning";
             this.StartLearning.Size = new System.Drawing.Size(112, 34);
             this.StartLearning.TabIndex = 0;
@@ -69,7 +72,7 @@ namespace cnn_winforms
             // 
             // StopLearning
             // 
-            this.StopLearning.Location = new System.Drawing.Point(724, 284);
+            this.StopLearning.Location = new System.Drawing.Point(437, 463);
             this.StopLearning.Name = "StopLearning";
             this.StopLearning.Size = new System.Drawing.Size(112, 34);
             this.StopLearning.TabIndex = 1;
@@ -79,7 +82,7 @@ namespace cnn_winforms
             // 
             // Exit
             // 
-            this.Exit.Location = new System.Drawing.Point(724, 339);
+            this.Exit.Location = new System.Drawing.Point(437, 518);
             this.Exit.Name = "Exit";
             this.Exit.Size = new System.Drawing.Size(112, 34);
             this.Exit.TabIndex = 2;
@@ -96,7 +99,7 @@ namespace cnn_winforms
             0,
             0,
             131072});
-            this.LearningRate.Location = new System.Drawing.Point(202, 68);
+            this.LearningRate.Location = new System.Drawing.Point(175, 411);
             this.LearningRate.Maximum = new decimal(new int[] {
             1,
             0,
@@ -108,7 +111,7 @@ namespace cnn_winforms
             0,
             393216});
             this.LearningRate.Name = "LearningRate";
-            this.LearningRate.Size = new System.Drawing.Size(120, 23);
+            this.LearningRate.Size = new System.Drawing.Size(120, 27);
             this.LearningRate.TabIndex = 3;
             this.LearningRate.Value = new decimal(new int[] {
             1,
@@ -120,9 +123,9 @@ namespace cnn_winforms
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(102, 70);
+            this.label2.Location = new System.Drawing.Point(75, 413);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(76, 15);
+            this.label2.Size = new System.Drawing.Size(96, 20);
             this.label2.TabIndex = 4;
             this.label2.Text = "Learning rate";
             this.label2.Click += new System.EventHandler(this.label2_Click);
@@ -130,24 +133,24 @@ namespace cnn_winforms
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(102, 171);
+            this.label3.Location = new System.Drawing.Point(75, 514);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(60, 15);
+            this.label3.Size = new System.Drawing.Size(77, 20);
             this.label3.TabIndex = 5;
             this.label3.Text = "Batch Size";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(102, 121);
+            this.label4.Location = new System.Drawing.Point(75, 464);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(45, 15);
+            this.label4.Size = new System.Drawing.Size(56, 20);
             this.label4.TabIndex = 6;
             this.label4.Text = "Epochs";
             // 
             // Epochs
             // 
-            this.Epochs.Location = new System.Drawing.Point(202, 119);
+            this.Epochs.Location = new System.Drawing.Point(175, 462);
             this.Epochs.Maximum = new decimal(new int[] {
             50,
             0,
@@ -159,7 +162,7 @@ namespace cnn_winforms
             0,
             0});
             this.Epochs.Name = "Epochs";
-            this.Epochs.Size = new System.Drawing.Size(120, 23);
+            this.Epochs.Size = new System.Drawing.Size(120, 27);
             this.Epochs.TabIndex = 7;
             this.Epochs.Value = new decimal(new int[] {
             1,
@@ -170,7 +173,7 @@ namespace cnn_winforms
             // 
             // BatchSize
             // 
-            this.BatchSize.Location = new System.Drawing.Point(202, 169);
+            this.BatchSize.Location = new System.Drawing.Point(175, 512);
             this.BatchSize.Maximum = new decimal(new int[] {
             16,
             0,
@@ -182,7 +185,7 @@ namespace cnn_winforms
             0,
             0});
             this.BatchSize.Name = "BatchSize";
-            this.BatchSize.Size = new System.Drawing.Size(120, 23);
+            this.BatchSize.Size = new System.Drawing.Size(120, 27);
             this.BatchSize.TabIndex = 8;
             this.BatchSize.Value = new decimal(new int[] {
             1,
@@ -191,10 +194,27 @@ namespace cnn_winforms
             0});
             this.BatchSize.ValueChanged += new System.EventHandler(this.BatchSize_ValueChanged);
             // 
+            // lossChart
+            // 
+            chartArea2.Name = "ChartArea1";
+            this.lossChart.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.lossChart.Legends.Add(legend2);
+            this.lossChart.Location = new System.Drawing.Point(12, 12);
+            this.lossChart.Name = "lossChart";
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.lossChart.Series.Add(series2);
+            this.lossChart.Size = new System.Drawing.Size(600, 375);
+            this.lossChart.TabIndex = 9;
+            this.lossChart.Text = "lossChart";
+            // 
             // Form1
             // 
             this.BackColor = System.Drawing.Color.Coral;
             this.ClientSize = new System.Drawing.Size(1021, 599);
+            this.Controls.Add(this.lossChart);
             this.Controls.Add(this.BatchSize);
             this.Controls.Add(this.Epochs);
             this.Controls.Add(this.label4);
@@ -205,9 +225,11 @@ namespace cnn_winforms
             this.Controls.Add(this.StopLearning);
             this.Controls.Add(this.StartLearning);
             this.Name = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.LearningRate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Epochs)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BatchSize)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lossChart)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -226,5 +248,6 @@ namespace cnn_winforms
         private Label label4;
         private NumericUpDown Epochs;
         private NumericUpDown BatchSize;
+        private System.Windows.Forms.DataVisualization.Charting.Chart lossChart;
     }
 }

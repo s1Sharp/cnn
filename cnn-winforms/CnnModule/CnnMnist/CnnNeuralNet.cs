@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Diagnostics;
-
+﻿using System.Diagnostics;
 using static TorchSharp.torch;
 using static TorchSharp.torch.nn;
 using static TorchSharp.torch.utils.data;
 using TorchSharp;
+using Contracts;
+using System.Collections.Generic;
 
 namespace CnnModule.CnnMnist
 {
@@ -69,16 +65,19 @@ namespace CnnModule.CnnMnist
         private static int _epochs = 5;
         private static int _trainBatchSize = 64;
         private static int _testBatchSize = 64;
+        private static int iterationNumber = 0;
+        private static List<TrainigResult> traingnResults = new List<TrainigResult>();
 
         private readonly static int _logInterval = 100;
 
         public CnnNeuralNet(Model model, CnnDataloader dataloader, Device device)
         {
-            TrainingLoop("mnist", device, model, dataloader);
+            
         }
 
-        public void TrainingLoop(string dataset, Device device, Model model, CnnDataloader dataloader)
+        public List<TrainigResult> TrainingLoop(string dataset, Device device, Model model, CnnDataloader dataloader)
         {
+            List<TrainigResult> result = new List<TrainigResult>();
 
             using var train = dataloader.trainLoader;
             using var test = dataloader.testLoader;
@@ -96,7 +95,7 @@ namespace CnnModule.CnnMnist
                 using (var d = NewDisposeScope())
                 {
 
-                    Train(model, optimizer, nn.NLLLoss(reduction: Reduction.Mean), train, epoch, dataloader.train_data.Count);
+                    result = Train(model, optimizer, nn.NLLLoss(reduction: Reduction.Mean), train, epoch, dataloader.train_data.Count);
                     Test(model, nn.NLLLoss(reduction: nn.Reduction.Sum), test, dataloader.test_data.Count);
 
                     Console.WriteLine($"End-of-epoch memory use: {GC.GetTotalMemory(false)}");
@@ -109,9 +108,10 @@ namespace CnnModule.CnnMnist
 
             Console.WriteLine("Saving model to '{0}'", dataset + ".model.bin");
             model.save(dataset + ".model.bin");
+            return result;
         }
 
-        private static void Train(
+        private static List<TrainigResult> Train(
             Model model,
             optim.Optimizer optimizer,
             Loss<torch.Tensor, torch.Tensor, torch.Tensor> loss,
@@ -119,6 +119,7 @@ namespace CnnModule.CnnMnist
             int epoch,
             long size)
         {
+
             model.train();
 
             int batchId = 1;
@@ -145,7 +146,9 @@ namespace CnnModule.CnnMnist
 
                     if (batchId % _logInterval == 0 || total == size)
                     {
+                        iterationNumber++;
                         Console.WriteLine($"\rTrain: epoch {epoch} [{total} / {size}] Loss: {output.ToSingle():F4}");
+                        traingnResults.Add(new TrainigResult() { Epoch = epoch, IterationNumber = iterationNumber, LossValue = output.ToDouble() });
                     }
 
                     batchId++;
@@ -153,6 +156,7 @@ namespace CnnModule.CnnMnist
                     d.DisposeEverything();
                 }
             }
+            return traingnResults;
         }
 
         private static void Test(

@@ -1,18 +1,27 @@
 using CnnModule;
+using CnnModule.CnnMnist;
+using System.Collections;
+using System.Windows.Forms.DataVisualization.Charting;
+using static TorchSharp.torch.utils.data;
+using static TorchSharp.torch;
+using Contracts;
 
 namespace cnn_winforms
 {
     public partial class Form1 : Form
     {
+        private readonly CnnMnistTrainer trainer;
+        private List<TrainigResult> trainigResults = new List<TrainigResult>();
+
         public Form1()
         {
             InitializeComponent();
+            this.trainer = new CnnMnistTrainer();
         }
-
         private void StartLearning_Click(object sender, EventArgs e)
         {
-            Linear l = new Linear(1, 1);
-            MessageBox.Show("Start learning, " + l.Whoami());
+            this.trainigResults = this.trainer.Train();
+            CreateChart();
         }
 
         private void StopLearning_Click(object sender, EventArgs e)
@@ -43,6 +52,28 @@ namespace cnn_winforms
         private void BatchSize_ValueChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            CreateChart();
+        }
+
+        public void CreateChart()
+        {
+            if (this.trainigResults.Any())
+            {
+                this.lossChart.Series[0].ChartType = SeriesChartType.Spline;
+                this.lossChart.Series[0].Points.DataBindXY(this.trainigResults.Select(x => x.IterationNumber).ToList(), this.trainigResults.Select(x => x.LossValue).ToList());
+            }
+            else
+            {
+                string message = "Training results was not found";
+                string caption = "Error Detected in Input";
+                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                var msgBox = MessageBox.Show(message, caption, buttons);
+            }
+           
         }
     }
 }

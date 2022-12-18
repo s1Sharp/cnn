@@ -15,4 +15,8 @@
     <PackageReference Include="TorchVision" Version="0.99.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Contracts\Contracts.csproj" />
+  </ItemGroup>
+
 </Project>
