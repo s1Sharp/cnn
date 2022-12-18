@@ -28,11 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title3 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.label1 = new System.Windows.Forms.Label();
             this.StartLearning = new System.Windows.Forms.Button();
             this.StopLearning = new System.Windows.Forms.Button();
@@ -44,10 +43,16 @@
             this.Epochs = new System.Windows.Forms.NumericUpDown();
             this.BatchSize = new System.Windows.Forms.NumericUpDown();
             this.lossChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.Clear = new System.Windows.Forms.Button();
+            this.Confirm = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.LearningRate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Epochs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BatchSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lossChart)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -110,7 +115,7 @@
             0,
             393216});
             this.LearningRate.Name = "LearningRate";
-            this.LearningRate.Size = new System.Drawing.Size(120, 23);
+            this.LearningRate.Size = new System.Drawing.Size(120, 27);
             this.LearningRate.TabIndex = 3;
             this.LearningRate.Value = new decimal(new int[] {
             1,
@@ -124,7 +129,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(75, 413);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(76, 15);
+            this.label2.Size = new System.Drawing.Size(96, 20);
             this.label2.TabIndex = 4;
             this.label2.Text = "Learning rate";
             this.label2.Click += new System.EventHandler(this.label2_Click);
@@ -134,7 +139,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(75, 514);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(60, 15);
+            this.label3.Size = new System.Drawing.Size(77, 20);
             this.label3.TabIndex = 5;
             this.label3.Text = "Batch Size";
             // 
@@ -143,7 +148,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(75, 464);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(45, 15);
+            this.label4.Size = new System.Drawing.Size(56, 20);
             this.label4.TabIndex = 6;
             this.label4.Text = "Epochs";
             // 
@@ -161,7 +166,7 @@
             0,
             0});
             this.Epochs.Name = "Epochs";
-            this.Epochs.Size = new System.Drawing.Size(120, 23);
+            this.Epochs.Size = new System.Drawing.Size(120, 27);
             this.Epochs.TabIndex = 7;
             this.Epochs.Value = new decimal(new int[] {
             1,
@@ -184,7 +189,7 @@
             0,
             0});
             this.BatchSize.Name = "BatchSize";
-            this.BatchSize.Size = new System.Drawing.Size(120, 23);
+            this.BatchSize.Size = new System.Drawing.Size(120, 27);
             this.BatchSize.TabIndex = 8;
             this.BatchSize.Value = new decimal(new int[] {
             1,
@@ -196,35 +201,81 @@
             // lossChart
             // 
             this.lossChart.AccessibleDescription = "";
-            chartArea1.AxisX.Title = "Iteration number";
-            chartArea1.AxisY.Title = "Loss value";
-            chartArea1.Name = "ChartArea1";
-            this.lossChart.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.lossChart.Legends.Add(legend1);
+            chartArea3.AxisX.Title = "Iteration number";
+            chartArea3.AxisY.Title = "Loss value";
+            chartArea3.Name = "ChartArea1";
+            this.lossChart.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.lossChart.Legends.Add(legend3);
             this.lossChart.Location = new System.Drawing.Point(12, 12);
             this.lossChart.Name = "lossChart";
-            series1.BorderWidth = 3;
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series1.IsXValueIndexed = true;
-            series1.LabelForeColor = System.Drawing.Color.BlanchedAlmond;
-            series1.Name = "LossValue";
-            series1.YValuesPerPoint = 2;
-            this.lossChart.Series.Add(series1);
+            series3.BorderWidth = 3;
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series3.IsXValueIndexed = true;
+            series3.LabelForeColor = System.Drawing.Color.BlanchedAlmond;
+            series3.Legend = "Legend1";
+            series3.Name = "LossValue";
+            series3.YValuesPerPoint = 2;
+            this.lossChart.Series.Add(series3);
             this.lossChart.Size = new System.Drawing.Size(600, 375);
             this.lossChart.TabIndex = 9;
             this.lossChart.Text = "lossChart";
-            title1.BorderWidth = 2;
-            title1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            title1.Name = "Title1";
-            title1.Text = "Loss chart";
-            this.lossChart.Titles.Add(title1);
+            title3.BorderWidth = 2;
+            title3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            title3.Name = "Title1";
+            title3.Text = "Loss chart";
+            this.lossChart.Titles.Add(title3);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.White;
+            this.pictureBox1.Location = new System.Drawing.Point(638, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(180, 180);
+            this.pictureBox1.TabIndex = 10;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
+            this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseMove);
+            this.pictureBox1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseUp);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.White;
+            this.pictureBox2.Location = new System.Drawing.Point(829, 12);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(180, 180);
+            this.pictureBox2.TabIndex = 11;
+            this.pictureBox2.TabStop = false;
+            // 
+            // Clear
+            // 
+            this.Clear.Location = new System.Drawing.Point(638, 209);
+            this.Clear.Name = "Clear";
+            this.Clear.Size = new System.Drawing.Size(88, 34);
+            this.Clear.TabIndex = 12;
+            this.Clear.Text = "Clear";
+            this.Clear.UseVisualStyleBackColor = true;
+            this.Clear.Click += new System.EventHandler(this.Clear_Click);
+            // 
+            // Confirm
+            // 
+            this.Confirm.Location = new System.Drawing.Point(730, 209);
+            this.Confirm.Name = "Confirm";
+            this.Confirm.Size = new System.Drawing.Size(88, 34);
+            this.Confirm.TabIndex = 13;
+            this.Confirm.Text = "Confirm";
+            this.Confirm.UseVisualStyleBackColor = true;
+            this.Confirm.Click += new System.EventHandler(this.Confirm_Click);
             // 
             // Form1
             // 
             this.BackColor = System.Drawing.Color.Coral;
             this.ClientSize = new System.Drawing.Size(1021, 599);
+            this.Controls.Add(this.Confirm);
+            this.Controls.Add(this.Clear);
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.lossChart);
             this.Controls.Add(this.BatchSize);
             this.Controls.Add(this.Epochs);
@@ -241,6 +292,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.Epochs)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BatchSize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lossChart)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -260,5 +313,9 @@
         private NumericUpDown Epochs;
         private NumericUpDown BatchSize;
         private System.Windows.Forms.DataVisualization.Charting.Chart lossChart;
+        private PictureBox pictureBox1;
+        private PictureBox pictureBox2;
+        private Button Clear;
+        private Button Confirm;
     }
 }
