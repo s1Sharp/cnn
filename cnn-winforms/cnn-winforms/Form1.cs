@@ -56,7 +56,7 @@ namespace cnn_winforms
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            CreateChart();
+
         }
 
         public void CreateChart()
@@ -70,10 +70,10 @@ namespace cnn_winforms
             {
                 string message = "Training results was not found";
                 string caption = "Error Detected in Input";
-                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                MessageBoxButtons buttons = MessageBoxButtons.OK;
                 var msgBox = MessageBox.Show(message, caption, buttons);
             }
-           
+
         }
     }
 }
