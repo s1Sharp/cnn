@@ -132,5 +132,80 @@ namespace cnn_winforms
 
             return validateParamsResult;
         }
+
+
+        // Canvas
+        private bool isMouseDown = false;
+        Point startPosition = Point.Empty;
+        private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
+        {
+            startPosition = e.Location;
+            isMouseDown = true;
+        }
+
+        private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
+        {
+            isMouseDown = false;
+            startPosition = Point.Empty;
+        }
+
+        private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
+        {
+            try
+            {
+                if (isMouseDown == true)
+                {
+                    if (startPosition != null)
+                    {
+                        if (pictureBox1.Image == null)
+                        {
+                            Bitmap bmp = new Bitmap(pictureBox1.Width, pictureBox1.Height);
+                            pictureBox1.Image = bmp;
+                        }
+                        using (Graphics g = Graphics.FromImage(pictureBox1.Image))
+                        {
+                            g.DrawLine(new Pen(Color.Black, 5), startPosition, e.Location);
+                            g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+                        }
+                        pictureBox1.Invalidate();
+                        startPosition = e.Location;
+                    }
+                }
+            } catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
+
+        private void Clear_Click(object sender, EventArgs e)
+        {
+            if (pictureBox1.Image != null)
+            {
+                pictureBox1.Image = null;
+                Invalidate();
+            }
+        }
+
+        private void Confirm_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (pictureBox1.Image == null)
+                {
+                    MessageBox.Show("Canvas is empty!!!\nDraw the image!!!\n");
+                } else
+                {
+                    Bitmap bm = new Bitmap(pictureBox1.ClientSize.Width, pictureBox1.ClientSize.Height);
+                    pictureBox1.DrawToBitmap(bm, pictureBox1.ClientRectangle);
+
+                    Image img = (Image)bm;
+
+                }
+            } catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }
