@@ -213,8 +213,10 @@ namespace cnn_winforms
                         Console.WriteLine($"Image shape {inputTensor.ToString()}");
                     }
 
-                    var drawnImage = torch.tensor(GetBytesWithoutAlpha(SKBitmap.Decode(barray)));
-
+                    //var drawnImage = torch.tensor(GetBytesWithoutAlpha(SKBitmap.Decode(barray)));
+                    torch.Tensor tmp = torch.tensor(byteImageArr);
+                    torch.Tensor drawnImage = tmp.reshape(1,28,28,1);
+                    
                     trainer.MakePrediction(drawnImage);
                     //var prediction = 
                     //// byte[] arr = ImageToByteArray(newimage);
@@ -277,9 +279,9 @@ namespace cnn_winforms
             //return xByte;
         }
 
-        public static byte[,] Bitmap2Arr(Bitmap pic)
+        public static double[,] Bitmap2Arr(Bitmap pic)
         { 
-            byte[,] arr = new byte[28, 28];  
+            double[,] arr = new double[28, 28];  
             for (int i = 0; i < pic.Width; i++)
             {
                 for (int j = 0; j < pic.Height; j++)
@@ -287,7 +289,7 @@ namespace cnn_winforms
                     Color c = pic.GetPixel(i, j);
 
                     //Apply conversion equation
-                    arr[i,j] = (byte)(.21 * c.R + .71 * c.G + .071 * c.B);
+                    arr[i,j] = (double)((byte)(.21 * c.R + .71 * c.G + .071 * c.B))/255;
 
                     //Set the color of this pixel
                     //pic.SetPixel(i, j, Color.FromArgb(gray, gray, gray));
