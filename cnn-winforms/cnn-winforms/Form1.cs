@@ -8,6 +8,7 @@ using TorchSharp;
 using static TorchSharp.torch.utils.data;
 using static TorchSharp.torchvision;
 using SkiaSharp;
+using System.Security.Cryptography.Xml;
 
 namespace cnn_winforms
 {
@@ -24,12 +25,12 @@ namespace cnn_winforms
             var batchSize = (int)this.BatchSize.Value;
 
             var validateResult = ValidateCnnParams(learningRate, epochNumber, batchSize);
-            if(validateResult.IsSuccess)
+            if (validateResult.IsSuccess)
                 this.trainer = new CnnMnistTrainer(learningRate, epochNumber, batchSize);
             else
             {
                 MessageBoxButtons buttons = MessageBoxButtons.OK;
-                MessageBox.Show( validateResult.ErrorMessage, validateResult.ErrorTitle, buttons);
+                MessageBox.Show(validateResult.ErrorMessage, validateResult.ErrorTitle, buttons);
             }
         }
         private void StartLearning_Click(object sender, EventArgs e)
@@ -49,7 +50,7 @@ namespace cnn_winforms
                 MessageBoxButtons buttons = MessageBoxButtons.OK;
                 MessageBox.Show(validateResult.ErrorMessage, validateResult.ErrorTitle, buttons);
             }
-            
+
         }
 
         private void StopLearning_Click(object sender, EventArgs e)
@@ -93,8 +94,7 @@ namespace cnn_winforms
             {
                 this.lossChart.Series[0].ChartType = SeriesChartType.Spline;
                 this.lossChart.Series[0].Points.DataBindXY(this.trainigResults.Select(x => x.IterationNumber).ToList(), this.trainigResults.Select(x => x.LossValue).ToList());
-            }
-            else
+            } else
             {
                 string message = "Training results was not found";
                 string caption = "Error Detected in Input";
@@ -204,8 +204,9 @@ namespace cnn_winforms
                 {
 
                     var bitmap = new Bitmap(pictureBox1.Image, new Size(28, 28));
+                    var byteImageArr = Bitmap2Arr(bitmap);
                     var newimage = (Image)(bitmap);
-                    var barray = converterImageToByteArray(newimage);
+                    var barray = converterImageToByteArray(bitmap);
                     pictureBox2.Image = newimage;
                     using (var inputTensor = torch.tensor(GetBytesWithoutAlpha(SKBitmap.Decode(barray))))
                     {
@@ -269,10 +270,32 @@ namespace cnn_winforms
         }
         public static byte[] converterImageToByteArray(Image x)
         {
-            ImageConverter _imageConverter = new ImageConverter();
-            byte[] xByte = (byte[])_imageConverter.ConvertTo(x, typeof(byte[]));
-            return xByte;
+            //x = kk(x);
+            MemoryStream ms = new MemoryStream();
+            x.Save(ms, System.Drawing.Imaging.ImageFormat.Gif);
+            return ms.ToArray();
+            //return xByte;
         }
+
+        public static byte[,] Bitmap2Arr(Bitmap pic)
+        { 
+            byte[,] arr = new byte[28, 28];  
+            for (int i = 0; i < pic.Width; i++)
+            {
+                for (int j = 0; j < pic.Height; j++)
+                {
+                    Color c = pic.GetPixel(i, j);
+
+                    //Apply conversion equation
+                    arr[i,j] = (byte)(.21 * c.R + .71 * c.G + .071 * c.B);
+
+                    //Set the color of this pixel
+                    //pic.SetPixel(i, j, Color.FromArgb(gray, gray, gray));
+                }
+            }
+            return arr;
+        }
+
 
         public byte[] ImageToByteArray(System.Drawing.Image imageIn)
         {
