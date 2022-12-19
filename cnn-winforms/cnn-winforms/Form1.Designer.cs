@@ -44,7 +44,6 @@
             this.BatchSize = new System.Windows.Forms.NumericUpDown();
             this.lossChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.Clear = new System.Windows.Forms.Button();
             this.Confirm = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.LearningRate)).BeginInit();
@@ -52,7 +51,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.BatchSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lossChart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -229,8 +227,8 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.White;
-            this.pictureBox1.Location = new System.Drawing.Point(631, 12);
+            this.pictureBox1.BackColor = System.Drawing.Color.Black;
+            this.pictureBox1.Location = new System.Drawing.Point(723, 12);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(180, 180);
             this.pictureBox1.TabIndex = 10;
@@ -239,18 +237,9 @@
             this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseMove);
             this.pictureBox1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseUp);
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackColor = System.Drawing.Color.White;
-            this.pictureBox2.Location = new System.Drawing.Point(829, 12);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(180, 180);
-            this.pictureBox2.TabIndex = 11;
-            this.pictureBox2.TabStop = false;
-            // 
             // Clear
             // 
-            this.Clear.Location = new System.Drawing.Point(631, 209);
+            this.Clear.Location = new System.Drawing.Point(723, 209);
             this.Clear.Name = "Clear";
             this.Clear.Size = new System.Drawing.Size(88, 34);
             this.Clear.TabIndex = 12;
@@ -260,7 +249,7 @@
             // 
             // Confirm
             // 
-            this.Confirm.Location = new System.Drawing.Point(723, 209);
+            this.Confirm.Location = new System.Drawing.Point(815, 209);
             this.Confirm.Name = "Confirm";
             this.Confirm.Size = new System.Drawing.Size(88, 34);
             this.Confirm.TabIndex = 13;
@@ -274,7 +263,6 @@
             this.ClientSize = new System.Drawing.Size(1021, 599);
             this.Controls.Add(this.Confirm);
             this.Controls.Add(this.Clear);
-            this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.lossChart);
             this.Controls.Add(this.BatchSize);
@@ -293,7 +281,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.BatchSize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lossChart)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -314,7 +301,6 @@
         private NumericUpDown BatchSize;
         private System.Windows.Forms.DataVisualization.Charting.Chart lossChart;
         private PictureBox pictureBox1;
-        private PictureBox pictureBox2;
         private Button Clear;
         private Button Confirm;
     }

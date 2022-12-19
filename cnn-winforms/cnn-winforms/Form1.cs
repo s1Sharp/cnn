@@ -3,6 +3,7 @@ using System.Windows.Forms.DataVisualization.Charting;
 using Contracts;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 using System.Windows.Forms;
+using System.Drawing.Imaging;
 
 namespace cnn_winforms
 {
@@ -164,7 +165,7 @@ namespace cnn_winforms
                         }
                         using (Graphics g = Graphics.FromImage(pictureBox1.Image))
                         {
-                            g.DrawLine(new Pen(Color.Black, 5), startPosition, e.Location);
+                            g.DrawLine(new Pen(Color.White, 5), startPosition, e.Location);
                             g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
                         }
                         pictureBox1.Invalidate();
@@ -196,11 +197,7 @@ namespace cnn_winforms
                     MessageBox.Show("Canvas is empty!!!\nDraw the image!!!\n");
                 } else
                 {
-                    Bitmap bm = new Bitmap(pictureBox1.ClientSize.Width, pictureBox1.ClientSize.Height);
-                    pictureBox1.DrawToBitmap(bm, pictureBox1.ClientRectangle);
-
-                    Image img = (Image)bm;
-
+                    MessageBox.Show("Pass\n");
                 }
             } catch (Exception ex)
             {
