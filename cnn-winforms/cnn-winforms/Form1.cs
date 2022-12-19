@@ -212,7 +212,10 @@ namespace cnn_winforms
                         Console.WriteLine($"Image shape {inputTensor.ToString()}");
                     }
 
-                    //var inputTensor_ = torch.tensor(GetBytesWithoutAlpha(SKBitmap.Decode(barray)));
+                    var drawnImage = torch.tensor(GetBytesWithoutAlpha(SKBitmap.Decode(barray)));
+
+                    trainer.MakePrediction(drawnImage);
+                    //var prediction = 
                     //// byte[] arr = ImageToByteArray(newimage);
                     ///
                 }

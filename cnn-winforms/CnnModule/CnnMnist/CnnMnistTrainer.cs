@@ -24,5 +24,10 @@ namespace CnnModule.CnnMnist
         {
             return cnnNeuralNet.TrainingLoop("mnist", device, model, dataloader);
         }
+
+        public (double, int) MakePrediction(torch.Tensor tensor)
+        {
+            return cnnNeuralNet.Predict(model, tensor);
+        }
     }
 }

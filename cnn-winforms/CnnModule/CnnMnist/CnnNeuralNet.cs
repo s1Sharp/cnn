@@ -190,5 +190,16 @@ namespace CnnModule.CnnMnist
             Console.WriteLine($"\rTest set: Average loss {(testLoss / size):F4} | Accuracy {((double)correct / size):P2}");
         }
 
+        public (double, int) Predict(Model model, torch.Tensor tensor)
+        { 
+            var prediction = model.forward(tensor);
+            var idontknow = prediction.argmax(1);
+            var val = idontknow.data<Int64>();
+            //double accuracy = prediction.data<float32>()[val];
+            double accuracy = 0.0;
+            int digit = 0;
+            return (accuracy, digit);
+        }
+
     }
 }
