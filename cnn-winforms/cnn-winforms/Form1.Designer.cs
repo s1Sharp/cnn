@@ -192,7 +192,7 @@
             this.BatchSize.Size = new System.Drawing.Size(120, 27);
             this.BatchSize.TabIndex = 8;
             this.BatchSize.Value = new decimal(new int[] {
-            1,
+            64,
             0,
             0,
             0});
