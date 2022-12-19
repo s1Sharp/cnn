@@ -46,11 +46,13 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Clear = new System.Windows.Forms.Button();
             this.Confirm = new System.Windows.Forms.Button();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.LearningRate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Epochs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BatchSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lossChart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -257,10 +259,20 @@
             this.Confirm.UseVisualStyleBackColor = true;
             this.Confirm.Click += new System.EventHandler(this.Confirm_Click);
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.Black;
+            this.pictureBox2.Location = new System.Drawing.Point(949, 84);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(28, 28);
+            this.pictureBox2.TabIndex = 14;
+            this.pictureBox2.TabStop = false;
+            // 
             // Form1
             // 
             this.BackColor = System.Drawing.Color.Coral;
             this.ClientSize = new System.Drawing.Size(1021, 599);
+            this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.Confirm);
             this.Controls.Add(this.Clear);
             this.Controls.Add(this.pictureBox1);
@@ -281,6 +293,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.BatchSize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lossChart)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -303,5 +316,6 @@
         private PictureBox pictureBox1;
         private Button Clear;
         private Button Confirm;
+        private PictureBox pictureBox2;
     }
 }

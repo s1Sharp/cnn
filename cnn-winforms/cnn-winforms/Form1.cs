@@ -4,6 +4,9 @@ using Contracts;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 using System.Windows.Forms;
 using System.Drawing.Imaging;
+using TorchSharp;
+using static TorchSharp.torch.utils.data;
+using static TorchSharp.torchvision;
 
 namespace cnn_winforms
 {
@@ -188,6 +191,7 @@ namespace cnn_winforms
             }
         }
 
+        //private torch.Tensor = new torch.Tensor();
         private void Confirm_Click(object sender, EventArgs e)
         {
             try
@@ -197,11 +201,23 @@ namespace cnn_winforms
                     MessageBox.Show("Canvas is empty!!!\nDraw the image!!!\n");
                 } else
                 {
-                    MessageBox.Show("Pass\n");
+                    var newimage = (Image)(new Bitmap(pictureBox1.Image, new Size(28, 28)));
+                    pictureBox2.Image = newimage;
+
+                    byte[] arr = ImageToByteArray(newimage);
                 }
             } catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+        }
+
+        public byte[] ImageToByteArray(System.Drawing.Image imageIn)
+        {
+            using (var ms = new MemoryStream())
+            {
+                imageIn.Save(ms, imageIn.RawFormat);
+                return ms.ToArray();
             }
         }
     }
