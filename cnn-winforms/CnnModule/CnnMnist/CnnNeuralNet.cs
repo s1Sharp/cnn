@@ -195,10 +195,9 @@ namespace CnnModule.CnnMnist
             model.eval();
             var prediction = model.forward(tensor);
             var idontknow = prediction.argmax(1);
-            var val = idontknow.data<Int64>();
-            //double accuracy = prediction.data<float32>()[val];
-            double accuracy = 0.0;
-            int digit = 0;
+            var val = idontknow[0].sum().ToInt32();
+            int digit = (int)val; 
+            double accuracy = prediction[0,digit].ToDouble();
             return (accuracy, digit);
         }
 

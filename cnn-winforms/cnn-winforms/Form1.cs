@@ -214,13 +214,15 @@ namespace cnn_winforms
                     }
 
                     //var drawnImage = torch.tensor(GetBytesWithoutAlpha(SKBitmap.Decode(barray)));
-                    torch.Tensor tmp = torch.tensor(byteImageArr);
+                    torch.Tensor tmp = torch.tensor(byteImageArr,dtype:torch.float32);
                     torch.Tensor drawnImage = tmp.reshape(1,1,28,28);
                     
-                    trainer.MakePrediction(drawnImage);
+                    (double acc,int digit) = trainer.MakePrediction(drawnImage);
                     //var prediction = 
                     //// byte[] arr = ImageToByteArray(newimage);
                     ///
+                    predictionLabel.Text = acc.ToString();
+                    digitLabel.Text = digit.ToString();
                 }
             } catch (Exception ex)
             {
