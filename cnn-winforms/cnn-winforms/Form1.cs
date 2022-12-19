@@ -204,7 +204,8 @@ namespace cnn_winforms
                     var newimage = (Image)(new Bitmap(pictureBox1.Image, new Size(28, 28)));
                     pictureBox2.Image = newimage;
 
-                    byte[] arr = ImageToByteArray(newimage);
+                    //byte[] arr = ImageToByteArray(newimage);
+                    //var tensor = torch.Tensor.UnsafeCreateTensor(arr);
                 }
             } catch (Exception ex)
             {
