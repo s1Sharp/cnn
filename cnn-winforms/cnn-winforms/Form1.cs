@@ -215,7 +215,7 @@ namespace cnn_winforms
 
                     //var drawnImage = torch.tensor(GetBytesWithoutAlpha(SKBitmap.Decode(barray)));
                     torch.Tensor tmp = torch.tensor(byteImageArr);
-                    torch.Tensor drawnImage = tmp.reshape(1,28,28,1);
+                    torch.Tensor drawnImage = tmp.reshape(1,1,28,28);
                     
                     trainer.MakePrediction(drawnImage);
                     //var prediction = 

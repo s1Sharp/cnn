@@ -191,7 +191,8 @@ namespace CnnModule.CnnMnist
         }
 
         public (double, int) Predict(Model model, torch.Tensor tensor)
-        { 
+        {
+            model.eval();
             var prediction = model.forward(tensor);
             var idontknow = prediction.argmax(1);
             var val = idontknow.data<Int64>();
