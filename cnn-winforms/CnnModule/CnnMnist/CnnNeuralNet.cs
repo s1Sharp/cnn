@@ -4,7 +4,6 @@ using static TorchSharp.torch.nn;
 using static TorchSharp.torch.utils.data;
 using TorchSharp;
 using Contracts;
-using System.Collections.Generic;
 
 namespace CnnModule.CnnMnist
 {
