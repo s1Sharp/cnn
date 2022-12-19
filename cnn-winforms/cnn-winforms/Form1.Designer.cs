@@ -43,13 +43,26 @@
             this.Epochs = new System.Windows.Forms.NumericUpDown();
             this.BatchSize = new System.Windows.Forms.NumericUpDown();
             this.lossChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.Clear = new System.Windows.Forms.Button();
+            this.Confirm = new System.Windows.Forms.Button();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.predictionLabel = new System.Windows.Forms.Label();
+            this.digitLabel = new System.Windows.Forms.Label();
+
             ((System.ComponentModel.ISupportInitialize)(this.LearningRate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Epochs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BatchSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lossChart)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -110,15 +123,15 @@
             1,
             0,
             0,
-            393216});
+            458752});
             this.LearningRate.Name = "LearningRate";
-            this.LearningRate.Size = new System.Drawing.Size(120, 23);
+            this.LearningRate.Size = new System.Drawing.Size(120, 27);
             this.LearningRate.TabIndex = 3;
             this.LearningRate.Value = new decimal(new int[] {
             1,
             0,
             0,
-            393216});
+            196608});
             this.LearningRate.ValueChanged += new System.EventHandler(this.LearningRate_ValueChanged);
             // 
             // label2
@@ -126,7 +139,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(75, 413);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(76, 15);
+            this.label2.Size = new System.Drawing.Size(96, 20);
             this.label2.TabIndex = 4;
             this.label2.Text = "Learning rate";
             this.label2.Click += new System.EventHandler(this.label2_Click);
@@ -136,7 +149,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(75, 514);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(60, 15);
+            this.label3.Size = new System.Drawing.Size(77, 20);
             this.label3.TabIndex = 5;
             this.label3.Text = "Batch Size";
             // 
@@ -145,7 +158,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(75, 464);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(45, 15);
+            this.label4.Size = new System.Drawing.Size(56, 20);
             this.label4.TabIndex = 6;
             this.label4.Text = "Epochs";
             // 
@@ -163,7 +176,7 @@
             0,
             0});
             this.Epochs.Name = "Epochs";
-            this.Epochs.Size = new System.Drawing.Size(120, 23);
+            this.Epochs.Size = new System.Drawing.Size(120, 27);
             this.Epochs.TabIndex = 7;
             this.Epochs.Value = new decimal(new int[] {
             1,
@@ -176,7 +189,7 @@
             // 
             this.BatchSize.Location = new System.Drawing.Point(175, 512);
             this.BatchSize.Maximum = new decimal(new int[] {
-            16,
+            128,
             0,
             0,
             0});
@@ -186,10 +199,10 @@
             0,
             0});
             this.BatchSize.Name = "BatchSize";
-            this.BatchSize.Size = new System.Drawing.Size(120, 23);
+            this.BatchSize.Size = new System.Drawing.Size(120, 27);
             this.BatchSize.TabIndex = 8;
             this.BatchSize.Value = new decimal(new int[] {
-            1,
+            64,
             0,
             0,
             0});
@@ -224,6 +237,7 @@
             title1.Text = "Loss chart";
             this.lossChart.Titles.Add(title1);
             // 
+
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(488, 400);
@@ -253,14 +267,105 @@
             this.button3.Text = "Save model";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.btnSaveModelClick);
+
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Black;
+            this.pictureBox1.Location = new System.Drawing.Point(723, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(180, 180);
+            this.pictureBox1.TabIndex = 10;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
+            this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseMove);
+            this.pictureBox1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseUp);
+            // 
+            // Clear
+            // 
+            this.Clear.Location = new System.Drawing.Point(723, 209);
+            this.Clear.Name = "Clear";
+            this.Clear.Size = new System.Drawing.Size(88, 34);
+            this.Clear.TabIndex = 12;
+            this.Clear.Text = "Clear";
+            this.Clear.UseVisualStyleBackColor = true;
+            this.Clear.Click += new System.EventHandler(this.Clear_Click);
+            // 
+            // Confirm
+            // 
+            this.Confirm.Location = new System.Drawing.Point(815, 209);
+            this.Confirm.Name = "Confirm";
+            this.Confirm.Size = new System.Drawing.Size(88, 34);
+            this.Confirm.TabIndex = 13;
+            this.Confirm.Text = "Confirm";
+            this.Confirm.UseVisualStyleBackColor = true;
+            this.Confirm.Click += new System.EventHandler(this.Confirm_Click);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.Black;
+            this.pictureBox2.Location = new System.Drawing.Point(949, 84);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(28, 28);
+            this.pictureBox2.TabIndex = 14;
+            this.pictureBox2.TabStop = false;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label6.Location = new System.Drawing.Point(723, 314);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(45, 20);
+            this.label6.TabIndex = 16;
+            this.label6.Text = "Digit:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label5.Location = new System.Drawing.Point(723, 279);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(79, 20);
+            this.label5.TabIndex = 17;
+            this.label5.Text = "Prediction:";
+            // 
+            // predictionLabel
+            // 
+            this.predictionLabel.AutoSize = true;
+            this.predictionLabel.Location = new System.Drawing.Point(815, 279);
+            this.predictionLabel.Name = "predictionLabel";
+            this.predictionLabel.Size = new System.Drawing.Size(36, 20);
+            this.predictionLabel.TabIndex = 18;
+            this.predictionLabel.Text = "0.00";
+            // 
+            // digitLabel
+            // 
+            this.digitLabel.AutoSize = true;
+            this.digitLabel.Location = new System.Drawing.Point(815, 314);
+            this.digitLabel.Name = "digitLabel";
+            this.digitLabel.Size = new System.Drawing.Size(45, 20);
+            this.digitLabel.TabIndex = 19;
+            this.digitLabel.Text = "None";
+
             // 
             // Form1
             // 
             this.BackColor = System.Drawing.Color.Coral;
             this.ClientSize = new System.Drawing.Size(1021, 599);
+
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
+
+            this.Controls.Add(this.digitLabel);
+            this.Controls.Add(this.predictionLabel);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.Confirm);
+            this.Controls.Add(this.Clear);
+            this.Controls.Add(this.pictureBox1);
+
             this.Controls.Add(this.lossChart);
             this.Controls.Add(this.BatchSize);
             this.Controls.Add(this.Epochs);
@@ -277,6 +382,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.Epochs)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BatchSize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lossChart)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -296,8 +403,19 @@
         private NumericUpDown Epochs;
         private NumericUpDown BatchSize;
         private System.Windows.Forms.DataVisualization.Charting.Chart lossChart;
+
         private Button button1;
         private Button button2;
         private Button button3;
+
+        private PictureBox pictureBox1;
+        private Button Clear;
+        private Button Confirm;
+        private PictureBox pictureBox2;
+        private Label label6;
+        private Label label5;
+        private Label predictionLabel;
+        private Label digitLabel;
+
     }
 }

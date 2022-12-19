@@ -4,7 +4,6 @@ using static TorchSharp.torch.nn;
 using static TorchSharp.torch.utils.data;
 using TorchSharp;
 using Contracts;
-using System.Collections.Generic;
 
 
 
@@ -195,6 +194,17 @@ namespace CnnModule.CnnMnist
             Console.WriteLine($"Size: {size}, Total: {size}");
 
             Console.WriteLine($"\rTest set: Average loss {(testLoss / size):F4} | Accuracy {((double)correct / size):P2}");
+        }
+
+        public (double, int) Predict(Model model, torch.Tensor tensor)
+        {
+            model.eval();
+            var prediction = model.forward(tensor);
+            var idontknow = prediction.argmax(1);
+            var val = idontknow[0].sum().ToInt32();
+            int digit = (int)val; 
+            double accuracy = prediction[0,digit].ToDouble();
+            return (accuracy, digit);
         }
 
     }
