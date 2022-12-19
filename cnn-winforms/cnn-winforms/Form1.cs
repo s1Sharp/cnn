@@ -169,7 +169,8 @@ namespace cnn_winforms
             {
                 var spath = openFileDialog1.FileName;
                 this.trainer.Load(spath);
-
+            }
+        }
 
         // Canvas
         private bool isMouseDown = false;
