@@ -132,5 +132,38 @@ namespace cnn_winforms
 
             return validateParamsResult;
         }
+
+        private void btnTestModelClick(object sender, EventArgs e)
+        {
+            this.trainer.Test();
+        }
+
+        private void btnSaveModelClick(object sender, EventArgs e)
+        {
+            using (var fbd = new FolderBrowserDialog())
+            {
+                DialogResult result = fbd.ShowDialog();
+
+                if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
+                {
+                    this.trainer.Save(fbd.SelectedPath);
+                }
+            }
+        }
+
+        private void btnLoadModelClick(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.InitialDirectory = @"C:\";
+            openFileDialog1.DefaultExt = "bin";
+            openFileDialog1.Filter = "bin files (*.bin)|*.bin";
+            openFileDialog1.CheckFileExists = true;
+            openFileDialog1.CheckPathExists = true;
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                var spath = openFileDialog1.FileName;
+                this.trainer.Load(spath);
+            }
+        }
     }
 }

@@ -6,6 +6,9 @@ using TorchSharp;
 using Contracts;
 using System.Collections.Generic;
 
+
+
+
 namespace CnnModule.CnnMnist
 {
     public class Model : Module<Tensor, Tensor>
@@ -58,6 +61,9 @@ namespace CnnModule.CnnMnist
 
             return logsm.forward(l41);
         }
+
+        
+
     }
 
     public class CnnNeuralNet
@@ -111,7 +117,7 @@ namespace CnnModule.CnnMnist
             return result;
         }
 
-        private static List<TrainigResult> Train(
+        public static List<TrainigResult> Train(
             Model model,
             optim.Optimizer optimizer,
             Loss<torch.Tensor, torch.Tensor, torch.Tensor> loss,
@@ -159,7 +165,7 @@ namespace CnnModule.CnnMnist
             return traingnResults;
         }
 
-        private static void Test(
+        public static void Test(
             Model model,
             Loss<torch.Tensor, torch.Tensor, torch.Tensor> loss,
             DataLoader dataLoader,

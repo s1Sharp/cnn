@@ -43,6 +43,9 @@
             this.Epochs = new System.Windows.Forms.NumericUpDown();
             this.BatchSize = new System.Windows.Forms.NumericUpDown();
             this.lossChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.LearningRate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Epochs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BatchSize)).BeginInit();
@@ -60,7 +63,7 @@
             // 
             // StartLearning
             // 
-            this.StartLearning.Location = new System.Drawing.Point(437, 403);
+            this.StartLearning.Location = new System.Drawing.Point(353, 400);
             this.StartLearning.Name = "StartLearning";
             this.StartLearning.Size = new System.Drawing.Size(112, 34);
             this.StartLearning.TabIndex = 0;
@@ -70,7 +73,7 @@
             // 
             // StopLearning
             // 
-            this.StopLearning.Location = new System.Drawing.Point(437, 463);
+            this.StopLearning.Location = new System.Drawing.Point(353, 460);
             this.StopLearning.Name = "StopLearning";
             this.StopLearning.Size = new System.Drawing.Size(112, 34);
             this.StopLearning.TabIndex = 1;
@@ -80,7 +83,7 @@
             // 
             // Exit
             // 
-            this.Exit.Location = new System.Drawing.Point(437, 518);
+            this.Exit.Location = new System.Drawing.Point(353, 515);
             this.Exit.Name = "Exit";
             this.Exit.Size = new System.Drawing.Size(112, 34);
             this.Exit.TabIndex = 2;
@@ -221,10 +224,43 @@
             title1.Text = "Loss chart";
             this.lossChart.Titles.Add(title1);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(488, 400);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(105, 36);
+            this.button1.TabIndex = 10;
+            this.button1.Text = "Test model";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.btnTestModelClick);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(488, 515);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(105, 34);
+            this.button2.TabIndex = 11;
+            this.button2.Text = "Load model";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.btnLoadModelClick);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(488, 460);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(105, 34);
+            this.button3.TabIndex = 12;
+            this.button3.Text = "Save model";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.btnSaveModelClick);
+            // 
             // Form1
             // 
             this.BackColor = System.Drawing.Color.Coral;
             this.ClientSize = new System.Drawing.Size(1021, 599);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.lossChart);
             this.Controls.Add(this.BatchSize);
             this.Controls.Add(this.Epochs);
@@ -260,5 +296,8 @@
         private NumericUpDown Epochs;
         private NumericUpDown BatchSize;
         private System.Windows.Forms.DataVisualization.Charting.Chart lossChart;
+        private Button button1;
+        private Button button2;
+        private Button button3;
     }
 }
