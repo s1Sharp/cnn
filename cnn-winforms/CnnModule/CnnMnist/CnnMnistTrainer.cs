@@ -40,7 +40,8 @@ namespace CnnModule.CnnMnist
             try
             {
                 this.model.load(cwd);
-            } catch
+            } 
+            catch
             {
                 Console.WriteLine("Model was NOT saved!!");
             }
@@ -56,7 +57,8 @@ namespace CnnModule.CnnMnist
                 string s = cwd + "\\" + "mnist" + ".model.bin";
                 this.model.save(s);
                 Console.WriteLine("Model was saved!!");
-            } catch
+            }
+            catch
             {
                 Console.WriteLine("Model was NOT saved!!");
             }
