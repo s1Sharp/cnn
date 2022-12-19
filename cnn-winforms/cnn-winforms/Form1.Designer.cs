@@ -47,6 +47,10 @@
             this.Clear = new System.Windows.Forms.Button();
             this.Confirm = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.predictionLabel = new System.Windows.Forms.Label();
+            this.digitLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.LearningRate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Epochs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BatchSize)).BeginInit();
@@ -268,10 +272,52 @@
             this.pictureBox2.TabIndex = 14;
             this.pictureBox2.TabStop = false;
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label6.Location = new System.Drawing.Point(723, 314);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(45, 20);
+            this.label6.TabIndex = 16;
+            this.label6.Text = "Digit:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label5.Location = new System.Drawing.Point(723, 279);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(79, 20);
+            this.label5.TabIndex = 17;
+            this.label5.Text = "Prediction:";
+            // 
+            // predictionLabel
+            // 
+            this.predictionLabel.AutoSize = true;
+            this.predictionLabel.Location = new System.Drawing.Point(815, 279);
+            this.predictionLabel.Name = "predictionLabel";
+            this.predictionLabel.Size = new System.Drawing.Size(36, 20);
+            this.predictionLabel.TabIndex = 18;
+            this.predictionLabel.Text = "0.00";
+            // 
+            // digitLabel
+            // 
+            this.digitLabel.AutoSize = true;
+            this.digitLabel.Location = new System.Drawing.Point(815, 314);
+            this.digitLabel.Name = "digitLabel";
+            this.digitLabel.Size = new System.Drawing.Size(45, 20);
+            this.digitLabel.TabIndex = 19;
+            this.digitLabel.Text = "None";
+            // 
             // Form1
             // 
             this.BackColor = System.Drawing.Color.Coral;
             this.ClientSize = new System.Drawing.Size(1021, 599);
+            this.Controls.Add(this.digitLabel);
+            this.Controls.Add(this.predictionLabel);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.Confirm);
             this.Controls.Add(this.Clear);
@@ -317,5 +363,9 @@
         private Button Clear;
         private Button Confirm;
         private PictureBox pictureBox2;
+        private Label label6;
+        private Label label5;
+        private Label predictionLabel;
+        private Label digitLabel;
     }
 }
