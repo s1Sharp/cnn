@@ -202,7 +202,7 @@ namespace cnn_winforms
                         }
                         using (Graphics g = Graphics.FromImage(pictureBox1.Image))
                         {
-                            g.DrawLine(new Pen(Color.White, 5), startPosition, e.Location);
+                            g.DrawLine(new Pen(Color.White, 10), startPosition, e.Location);
                             g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
                         }
                         pictureBox1.Invalidate();
