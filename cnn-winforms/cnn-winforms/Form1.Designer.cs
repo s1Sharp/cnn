@@ -43,11 +43,9 @@
             this.Epochs = new System.Windows.Forms.NumericUpDown();
             this.BatchSize = new System.Windows.Forms.NumericUpDown();
             this.lossChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
-
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Clear = new System.Windows.Forms.Button();
             this.Confirm = new System.Windows.Forms.Button();
@@ -56,7 +54,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.predictionLabel = new System.Windows.Forms.Label();
             this.digitLabel = new System.Windows.Forms.Label();
-
             ((System.ComponentModel.ISupportInitialize)(this.LearningRate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Epochs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BatchSize)).BeginInit();
@@ -125,7 +122,7 @@
             0,
             458752});
             this.LearningRate.Name = "LearningRate";
-            this.LearningRate.Size = new System.Drawing.Size(120, 27);
+            this.LearningRate.Size = new System.Drawing.Size(120, 23);
             this.LearningRate.TabIndex = 3;
             this.LearningRate.Value = new decimal(new int[] {
             1,
@@ -139,7 +136,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(75, 413);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(96, 20);
+            this.label2.Size = new System.Drawing.Size(76, 15);
             this.label2.TabIndex = 4;
             this.label2.Text = "Learning rate";
             this.label2.Click += new System.EventHandler(this.label2_Click);
@@ -149,7 +146,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(75, 514);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(77, 20);
+            this.label3.Size = new System.Drawing.Size(60, 15);
             this.label3.TabIndex = 5;
             this.label3.Text = "Batch Size";
             // 
@@ -158,7 +155,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(75, 464);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(56, 20);
+            this.label4.Size = new System.Drawing.Size(45, 15);
             this.label4.TabIndex = 6;
             this.label4.Text = "Epochs";
             // 
@@ -176,7 +173,7 @@
             0,
             0});
             this.Epochs.Name = "Epochs";
-            this.Epochs.Size = new System.Drawing.Size(120, 27);
+            this.Epochs.Size = new System.Drawing.Size(120, 23);
             this.Epochs.TabIndex = 7;
             this.Epochs.Value = new decimal(new int[] {
             1,
@@ -199,7 +196,7 @@
             0,
             0});
             this.BatchSize.Name = "BatchSize";
-            this.BatchSize.Size = new System.Drawing.Size(120, 27);
+            this.BatchSize.Size = new System.Drawing.Size(120, 23);
             this.BatchSize.TabIndex = 8;
             this.BatchSize.Value = new decimal(new int[] {
             64,
@@ -237,7 +234,6 @@
             title1.Text = "Loss chart";
             this.lossChart.Titles.Add(title1);
             // 
-
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(488, 400);
@@ -267,10 +263,11 @@
             this.button3.Text = "Save model";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.btnSaveModelClick);
-
+            // 
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Black;
+            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Cross;
             this.pictureBox1.Location = new System.Drawing.Point(723, 12);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(180, 180);
@@ -315,7 +312,7 @@
             this.label6.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label6.Location = new System.Drawing.Point(723, 314);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(45, 20);
+            this.label6.Size = new System.Drawing.Size(35, 15);
             this.label6.TabIndex = 16;
             this.label6.Text = "Digit:";
             // 
@@ -325,7 +322,7 @@
             this.label5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label5.Location = new System.Drawing.Point(723, 279);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(79, 20);
+            this.label5.Size = new System.Drawing.Size(64, 15);
             this.label5.TabIndex = 17;
             this.label5.Text = "Prediction:";
             // 
@@ -334,7 +331,7 @@
             this.predictionLabel.AutoSize = true;
             this.predictionLabel.Location = new System.Drawing.Point(815, 279);
             this.predictionLabel.Name = "predictionLabel";
-            this.predictionLabel.Size = new System.Drawing.Size(36, 20);
+            this.predictionLabel.Size = new System.Drawing.Size(28, 15);
             this.predictionLabel.TabIndex = 18;
             this.predictionLabel.Text = "0.00";
             // 
@@ -343,20 +340,17 @@
             this.digitLabel.AutoSize = true;
             this.digitLabel.Location = new System.Drawing.Point(815, 314);
             this.digitLabel.Name = "digitLabel";
-            this.digitLabel.Size = new System.Drawing.Size(45, 20);
+            this.digitLabel.Size = new System.Drawing.Size(36, 15);
             this.digitLabel.TabIndex = 19;
             this.digitLabel.Text = "None";
-
             // 
             // Form1
             // 
             this.BackColor = System.Drawing.Color.Coral;
             this.ClientSize = new System.Drawing.Size(1021, 599);
-
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-
             this.Controls.Add(this.digitLabel);
             this.Controls.Add(this.predictionLabel);
             this.Controls.Add(this.label5);
@@ -365,7 +359,6 @@
             this.Controls.Add(this.Confirm);
             this.Controls.Add(this.Clear);
             this.Controls.Add(this.pictureBox1);
-
             this.Controls.Add(this.lossChart);
             this.Controls.Add(this.BatchSize);
             this.Controls.Add(this.Epochs);

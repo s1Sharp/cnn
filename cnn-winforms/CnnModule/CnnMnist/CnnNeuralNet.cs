@@ -199,7 +199,8 @@ namespace CnnModule.CnnMnist
         public (double, int) Predict(Model model, torch.Tensor tensor)
         {
             model.eval();
-            var prediction = model.forward(tensor);
+            var prediction =  model.forward(tensor);
+            prediction = Softmax(1).forward(prediction);
             var idontknow = prediction.argmax(1);
             var val = idontknow[0].sum().ToInt32();
             int digit = (int)val; 

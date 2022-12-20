@@ -202,7 +202,7 @@ namespace cnn_winforms
                         }
                         using (Graphics g = Graphics.FromImage(pictureBox1.Image))
                         {
-                            g.DrawLine(new Pen(Color.White, 5), startPosition, e.Location);
+                            g.DrawLine(new Pen(Color.White, 15), startPosition, e.Location);
                             g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
                         }
                         pictureBox1.Invalidate();
@@ -324,7 +324,7 @@ namespace cnn_winforms
                     Color c = pic.GetPixel(i, j);
 
                     //Apply conversion equation
-                    arr[i,j] = (double)((byte)(.21 * c.R + .71 * c.G + .071 * c.B))/255;
+                    arr[j,i] = (double)((byte)(.21 * c.R + .71 * c.G + .071 * c.B))/255;
 
                     //Set the color of this pixel
                     //pic.SetPixel(i, j, Color.FromArgb(gray, gray, gray));
